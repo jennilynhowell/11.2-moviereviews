@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"/>
+    <title>MovieNite</title>
 </head>
-<body>
+<body class="container">
+
+    <header class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="container">
+            <ul class="list-inline list-unstyled">
+                <li class="navbar-brand"><span class="glyphicon glyphicon-facetime-video"></span><b class="logo">MovieNite</b></li>
+
+                <li class="navbar-right">
+                    <ul class="list-inline list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">View All Movies</a></li>
+                        <li><a href="#">Add a Movie</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
 </body>
 </html>
