@@ -15,8 +15,8 @@
 
                 <li class="navbar-right">
                     <ul class="list-inline list-unstyled">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Add a Movie</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#add-movie">Add a Movie</a></li>
                     </ul>
                 </li>
             </ul>
@@ -35,9 +35,9 @@
                     <div class="panel-body">
                        <ul class="list-unstyled">
                            <li>Genre: <span th:text="${movie.genre}"></span></li>
-                           <li><a th:href="${movie.imdburl}">View on IMDB</a></li>
+                           <li><a th:href="${movie.imdburl}" target="_blank">View on IMDB</a></li>
                            <li>Release Date: <span th:text="${movie.releasedate}"></span></li>
-                           <li><a th:href="'/movie/' + @{${movie.id}}">Review this Movie</a></li>
+                           <li><a th:href="'/movie/' + @{${movie.id}}">Review or Edit this Movie</a></li>
                        </ul>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
 
     <hr/>
 
-    <section class="container">
+    <section class="container" id="add-movie">
         <h3>Add a Movie</h3>
         <form action="/addMovie" method="post">
             <div class="form-group">

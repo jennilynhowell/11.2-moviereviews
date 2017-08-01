@@ -9,47 +9,67 @@ public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String reviewerName;
-    private String reviewerAge;
-    private String reviewerGender;
-    private String reviewerOccupation;
+    private String movietitle;
+    private String reviewername;
+    private String reviewerage;
+    private String reviewergender;
+    private String revieweroccupation;
     private int rating;
 
-    //movie name and fk will come from Movie model
-
+    @ManyToOne
+    @JoinColumn(name = "movie_id")
+    private Movie movie;
 
     public Review() {}
 
-    public String getReviewerName() {
-        return reviewerName;
+    public Review(String movietitle, String reviewername, String reviewerage, String reviewergender, String revieweroccupation, int rating, Movie movie) {
+        this.movietitle = movietitle;
+        this.reviewername = reviewername;
+        this.reviewerage = reviewerage;
+        this.reviewergender = reviewergender;
+        this.revieweroccupation = revieweroccupation;
+        this.rating = rating;
+        this.movie = movie;
     }
 
-    public void setReviewerName(String reviewerName) {
-        this.reviewerName = reviewerName;
+    public long getId() {
+        return id;
     }
 
-    public String getReviewerAge() {
-        return reviewerAge;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setReviewerAge(String reviewerAge) {
-        this.reviewerAge = reviewerAge;
+    public String getReviewername() {
+        return reviewername;
     }
 
-    public String getReviewerGender() {
-        return reviewerGender;
+    public void setReviewername(String reviewername) {
+        this.reviewername = reviewername;
     }
 
-    public void setReviewerGender(String reviewerGender) {
-        this.reviewerGender = reviewerGender;
+    public String getReviewerage() {
+        return reviewerage;
     }
 
-    public String getReviewerOccupation() {
-        return reviewerOccupation;
+    public void setReviewerage(String reviewerage) {
+        this.reviewerage = reviewerage;
     }
 
-    public void setReviewerOccupation(String reviewerOccupation) {
-        this.reviewerOccupation = reviewerOccupation;
+    public String getReviewergender() {
+        return reviewergender;
+    }
+
+    public void setReviewergender(String reviewergender) {
+        this.reviewergender = reviewergender;
+    }
+
+    public String getRevieweroccupation() {
+        return revieweroccupation;
+    }
+
+    public void setRevieweroccupation(String revieweroccupation) {
+        this.revieweroccupation = revieweroccupation;
     }
 
     public int getRating() {
@@ -58,5 +78,13 @@ public class Review {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public String getMovietitle() {
+        return movietitle;
+    }
+
+    public void setMovietitle(String movietitle) {
+        this.movietitle = movietitle;
     }
 }

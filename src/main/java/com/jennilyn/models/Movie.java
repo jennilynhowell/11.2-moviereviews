@@ -1,6 +1,7 @@
 package com.jennilyn.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "movie")
@@ -14,6 +15,9 @@ public class Movie {
     private String genre;
     private String imdburl;
     private String releasedate;
+
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+    List<Review> reviews;
 
     public Movie() {}
 
@@ -62,5 +66,13 @@ public class Movie {
 
     public void setReleasedate(String releasedate) {
         this.releasedate = releasedate;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 }

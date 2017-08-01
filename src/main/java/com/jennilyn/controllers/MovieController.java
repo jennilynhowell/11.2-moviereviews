@@ -1,7 +1,9 @@
 package com.jennilyn.controllers;
 
 import com.jennilyn.interfaces.MovieRepository;
+import com.jennilyn.interfaces.ReviewRepository;
 import com.jennilyn.models.Movie;
+import com.jennilyn.models.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,9 @@ public class MovieController {
 
     @Autowired
     MovieRepository repo;
+
+    @Autowired
+    ReviewRepository reviewRepo;
 
     @RequestMapping("/")
     public String index(Model model){
@@ -36,7 +41,22 @@ public class MovieController {
     @RequestMapping("/movie/{movieId}")
     public String movieDetail(@PathVariable("movieId") long movieId, Model model){
         Movie movie = repo.findOne(movieId);
+        model.addAttribute("movie", movie);
         return "movieDetail";
+    }
+
+    @RequestMapping(value = "/movie/{movieId}/addReview", method = RequestMethod.POST)
+    public String addReview(@PathVariable("movieId") long movieId,
+                            @RequestParam("movietitle") String movietitle,
+                            @RequestParam("rating") int rating,
+                            @RequestParam("reviewername") String reviewername,
+                            @RequestParam("age") String age,
+                            @RequestParam("reviewergender") String reviewergender,
+                            @RequestParam("revieweroccupation") String revieweroccupation){
+        Movie movie = repo.findOne(movieId);
+        Review newReview = new Review(movietitle, reviewername, age, reviewergender, revieweroccupation, rating, movie);
+        reviewRepo.save(newReview);
+        return "redirect:/movie/" + movieId;
     }
 
 }
