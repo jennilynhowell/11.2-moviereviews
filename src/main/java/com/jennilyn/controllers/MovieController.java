@@ -59,4 +59,29 @@ public class MovieController {
         return "redirect:/movie/" + movieId;
     }
 
+    @RequestMapping("/movie/edit/{movieId}")
+    public String editMovieView(@PathVariable("movieId") long movieId, Model model){
+        Movie movie = repo.findOne(movieId);
+        model.addAttribute("movie", movie);
+        return "editMovie";
+
+    }
+
+    @RequestMapping(value = "/movie/edit/{movieId}/editMovie", method = RequestMethod.POST)
+    public String editMovie(@PathVariable("movieId") long movieId,
+                            @RequestParam("title") String title,
+                            @RequestParam("genre") String genre,
+                            @RequestParam("imdburl") String imdburl,
+                            @RequestParam("releasedate") String releasedate){
+
+        Movie movie = repo.findOne(movieId);
+        movie.setTitle(title);
+        movie.setGenre(genre);
+        movie.setImdburl(imdburl);
+        movie.setReleasedate(releasedate);
+        repo.save(movie);
+
+        return "redirect:/movie/" + movieId;
+    }
+
 }

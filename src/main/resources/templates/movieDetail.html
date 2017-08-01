@@ -37,7 +37,7 @@
                             <li>Genre: <span th:text="${movie.genre}"></span></li>
                             <li><a th:href="${movie.imdburl}">View on IMDB</a></li>
                             <li>Release Date: <span th:text="${movie.releasedate}"></span></li>
-                            <li><a th:href="'/movie/' + @{movie.id}">Review this Movie</a></li>
+                            <li><a th:href="'/movie/edit/' + @{${movie.id}}">Edit this Movie</a></li>
                         </ul>
                     </div>
                 </div>

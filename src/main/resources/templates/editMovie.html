@@ -24,52 +24,46 @@
     </header>
 
     <main class="container">
-
-        <div class="row">
-            <h3>Latest Movies</h3>
-            <div class="col-md-4" th:each="movie : ${movies}">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title" th:text="${movie.title}"></h3>
-                    </div>
-                    <div class="panel-body">
-                       <ul class="list-unstyled">
-                           <li>Genre: <span th:text="${movie.genre}"></span></li>
-                           <li><a th:href="${movie.imdburl}" target="_blank">View on IMDB</a></li>
-                           <li>Release Date: <span th:text="${movie.releasedate}"></span></li>
-                           <li><a th:href="'/movie/' + @{${movie.id}}">Review this Movie</a></li>
-                       </ul>
-                    </div>
+        <h3>Movie Details</h3>
+        <div class="col-md-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title" th:text="${movie.title}"></h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                        <li>Genre: <span th:text="${movie.genre}"></span></li>
+                        <li><a th:href="${movie.imdburl}">View on IMDB</a></li>
+                        <li>Release Date: <span th:text="${movie.releasedate}"></span></li>
+                    </ul>
                 </div>
             </div>
-
         </div>
-
     </main>
 
     <hr/>
 
     <section class="container" id="add-movie">
-        <h3>Add a Movie</h3>
-        <form action="/addMovie" method="post">
+        <h3>Edit this Movie</h3>
+        <form th:action="'/movie/edit/' + ${movieId} + '/editMovie'" method="post">
             <div class="form-group">
-                <label for="title">Title</label>
+                <label for="title">Update Title</label>
                 <input type="text" name="title" class="form-control" id="title" placeholder="Movie Title" required="required"/>
             </div>
             <div class="form-group">
-                <label for="genre">Genre</label>
+                <label for="genre">Update Genre</label>
                 <input type="text" name="genre" class="form-control" id="genre" placeholder="Movie Genre"/>
             </div>
             <div class="form-group">
-                <label for="imdburl">IMDB URL</label>
+                <label for="imdburl">Update IMDB URL</label>
                 <input type="text" name="imdburl" class="form-control" id="imdburl" placeholder="IMDB URL"/>
             </div>
             <div class="form-group">
-                <label for="releasedate">Release Date</label>
+                <label for="releasedate">Update Release Date</label>
                 <input type="text" name="releasedate" class="form-control" id="releasedate" placeholder="Release Month + Year"/>
             </div>
 
-            <button type="submit" class="btn btn-primary">Add Movie!</button>
+            <button type="submit" class="btn btn-primary">Submit Changes</button>
         </form>
     </section>
 
