@@ -62,6 +62,18 @@ main.container {
 
 }
 
+.movies-list {
+    padding: 30px;
+}
+
+.movie-box {
+    box-shadow: 6px -3px 12px rgba(238, 238, 238, 0.3);
+}
+
+.form-container {
+    margin-bottom: 50px;
+}
+
 .latest-h3 {
     padding: 10px 0px;
     color: #eee;
@@ -122,11 +134,13 @@ main.container {
     position: absolute;
     top: 0;
     margin-left: 5%;
+    padding-bottom: 5%;
     color: #f7f7f7;
+    font-size: 1.1em;
 }
 
 .feature-body li {
-    font-size: 1.3em;
+    font-size: 1em;
 }
 
 .feature-body a {
@@ -135,6 +149,11 @@ main.container {
 
 .feature-reviews {
     margin-left: 2%;
+}
+
+.feature-reviews li {
+    display: inline-block;
+    padding-right: 5px;
 }
 
 section.detail-container {

@@ -35,9 +35,10 @@
                 <div class="panel-body">
                     <ul class="list-unstyled">
                         <li>Genre: <span th:text="${movie.genre}"></span></li>
-                        <li><a th:href="${movie.imdburl}">View on IMDB</a></li>
+                        <li><a th:href="${movie.imdburl}" target="_blank">View on IMDB</a></li>
                         <li>Release Date: <span th:text="${movie.releasedate}"></span></li>
                     </ul>
+                    <div><a th:href="'/movie/' + @{${movieId}}">Back to Reviews</a></div>
                 </div>
             </div>
         </div>
@@ -45,7 +46,7 @@
 
     <hr/>
 
-    <section class="container" id="add-movie">
+    <section class="container col-md-8 form-container" id="">
         <h3>Edit this Movie</h3>
         <form th:action="'/movie/edit/' + ${movieId} + '/editMovie'" method="post">
             <div class="form-group">
@@ -58,11 +59,26 @@
             </div>
             <div class="form-group">
                 <label for="imdburl">Update IMDB URL</label>
-                <input type="text" name="imdburl" class="form-control" id="imdburl" placeholder="IMDB URL"/>
+                <input type="url" name="imdburl" class="form-control" id="imdburl" placeholder="IMDB URL"/>
             </div>
             <div class="form-group">
                 <label for="releasedate">Update Release Date</label>
-                <input type="text" name="releasedate" class="form-control" id="releasedate" placeholder="Release Month + Year"/>
+                <select class="form-control" name="releasedate" id="age">
+                    <option value="0">Release Month</option>
+                    <option>January</option>
+                    <option>February</option>
+                    <option>March</option>
+                    <option>April</option>
+                    <option>May</option>
+                    <option>June</option>
+                    <option>July</option>
+                    <option>August</option>
+                    <option>September</option>
+                    <option>October</option>
+                    <option>November</option>
+                    <option>December</option>
+                </select>
+                <input type="text" name="releasedate" class="form-control" id="releasedate" placeholder="Release Year"/>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit Changes</button>

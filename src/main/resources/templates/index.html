@@ -34,11 +34,11 @@
     <main class="container">
         <!--Photo by Felix Mooneeram on Unsplash-->
         <div class="row">
-            <div class="container">
+            <div class="container movies-list">
 
                 <h3 class="latest-h3">Latest Movies</h3>
                 <div class="col-md-4" th:each="movie : ${movies}">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary movie-box">
                         <div class="panel-heading">
                             <h3 class="panel-title" th:text="${movie.title}"></h3>
                         </div>
@@ -58,7 +58,7 @@
 
     </main>
 
-    <div class="container row bottom-row">
+    <div class="container row bottom-row form-container">
         <section class="container col-md-6" id="add-movie">
             <h3>Add a Movie</h3>
             <form action="/addMovie" method="post">
@@ -72,11 +72,26 @@
                 </div>
                 <div class="form-group">
                     <label for="imdburl">IMDB URL</label>
-                    <input type="text" name="imdburl" class="form-control" id="imdburl" placeholder="IMDB URL"/>
+                    <input type="url" name="imdburl" class="form-control" id="imdburl" placeholder="IMDB URL"/>
                 </div>
                 <div class="form-group">
                     <label for="releasedate">Release Date</label>
-                    <input type="text" name="releasedate" class="form-control" id="releasedate" placeholder="Release Month + Year"/>
+                    <select class="form-control" name="releasedate" id="age">
+                        <option value="0">Release Month</option>
+                        <option>January</option>
+                        <option>February</option>
+                        <option>March</option>
+                        <option>April</option>
+                        <option>May</option>
+                        <option>June</option>
+                        <option>July</option>
+                        <option>August</option>
+                        <option>September</option>
+                        <option>October</option>
+                        <option>November</option>
+                        <option>December</option>
+                    </select>
+                    <input type="text" name="releasedate" class="form-control" id="releasedate" placeholder="Release Year"/>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Add Movie!</button>
@@ -95,6 +110,7 @@
                         <li><b>Release Date: </b><span th:text="${feature.releasedate}"></span></li>
                         <li><b>Recent Reviews: </b>
                             <ul class="list-unstyled feature-reviews" th:each="review : ${feature.reviews}">
+                                <li><b>By: </b> <span th:text="${review.reviewername}"></span></li>
                                 <li><b>Stars: </b> <span th:text="${review.rating}"></span></li>
                                 <li><b>Reviewer's Age: </b> <span th:text="${review.reviewerage}"></span></li>
                             </ul>
