@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"/>
-    <link href="../static/css/styles.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{css/styles.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Limelight|Taviraj" rel="stylesheet"/>
     <title>MovieNite</title>
 </head>
-<body class="container main-body">
+<body class="main-body">
 
     <header class="navbar navbar-inverse navbar-fixed-top">
         <nav class="container">
@@ -14,7 +15,7 @@
                 <li class="navbar-brand"><span class="glyphicon glyphicon-facetime-video"></span><b class="logo">MovieNite</b></li>
 
                 <li class="navbar-right">
-                    <ul class="list-inline list-unstyled">
+                    <ul class="list-inline list-unstyled nav-list">
                         <li><a href="/">Home</a></li>
                         <li><a href="#add-movie">Add a Movie</a></li>
                     </ul>
@@ -23,22 +24,32 @@
         </nav>
     </header>
 
-    <main class="container">
+    <div class="jumbotron">
+        <div class="container">
+            <h1>It's MovieNite!</h1>
+            <p>Log your favorite (or not-so-favorite) movies and share reviews with others.</p>
+        </div>
+    </div>
 
+    <main class="container">
+        <!--Photo by Felix Mooneeram on Unsplash-->
         <div class="row">
-            <h3>Latest Movies</h3>
-            <div class="col-md-4" th:each="movie : ${movies}">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title" th:text="${movie.title}"></h3>
-                    </div>
-                    <div class="panel-body">
-                       <ul class="list-unstyled">
-                           <li>Genre: <span th:text="${movie.genre}"></span></li>
-                           <li><a th:href="${movie.imdburl}" target="_blank">View on IMDB</a></li>
-                           <li>Release Date: <span th:text="${movie.releasedate}"></span></li>
-                           <li><a th:href="'/movie/' + @{${movie.id}}">Review this Movie</a></li>
-                       </ul>
+            <div class="container">
+
+                <h3 class="latest-h3">Latest Movies</h3>
+                <div class="col-md-4" th:each="movie : ${movies}">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" th:text="${movie.title}"></h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>Genre: <span th:text="${movie.genre}"></span></li>
+                                <li><a th:href="${movie.imdburl}" target="_blank">View on IMDB</a></li>
+                                <li>Release Date: <span th:text="${movie.releasedate}"></span></li>
+                                <li><a th:href="'/movie/' + @{${movie.id}}">Review this Movie</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -46,8 +57,6 @@
         </div>
 
     </main>
-
-    <hr/>
 
     <section class="container" id="add-movie">
         <h3>Add a Movie</h3>

@@ -1,4 +1,68 @@
-body.main-body {
-    padding-top: 70px;
-    background-color: gray;
+body {
+    padding-top: 45px;
+    background-color: #eee;
+    font-family: 'Taviraj', serif;
+}
+
+.navbar-inverse {
+    background-color: #601017;
+    border: none;
+    box-shadow: -2px 2px 15px;
+}
+
+.logo {
+    font-family: 'Limelight', cursive;
+    padding-left: 10px;
+    color: #fff;
+    font-size: 1.3em;
+}
+
+.glyphicon {
+    color: #fff;
+}
+
+.nav-list {
+    padding-top: 15px;
+}
+
+.nav-list li a {
+    color: #fff;
+    font-weight: bold;
+}
+
+.jumbotron h1 {
+    font-family: 'Limelight', cursive;
+}
+
+main.container {
+    width: 100vw;
+    padding: 0;
+    background-image: url("../img/felix-mooneeram-222805.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.latest-h3 {
+    padding: 10px 0px;
+    color: #eee;
+}
+
+.panel-primary {
+    border-color: #232323;
+}
+
+.panel-body {
+    background-color: #eee;
+}
+
+.panel-primary>.panel-heading {
+    background-color: #601017;
+}
+
+.panel-title {
+    font-family: 'Limelight', cursive;
+    color: #eee;
+    font-size: 1.2em;
+    letter-spacing: 0.01em;
 }
