@@ -1,7 +1,25 @@
 body {
     padding-top: 45px;
+    padding-bottom: 40px;
     background-color: #eee;
     font-family: 'Taviraj', serif;
+}
+
+a {
+    color: #601017;
+}
+
+a:hover {
+    color: #992a34;
+}
+
+.btn-primary {
+    background-color: #601017;
+    border-color: #601017;
+}
+
+.btn-primary:hover {
+    background-color: #992a34;
 }
 
 .navbar-inverse {
@@ -10,11 +28,12 @@ body {
     box-shadow: -2px 2px 15px;
 }
 
-.logo {
+.logo a {
     font-family: 'Limelight', cursive;
     padding-left: 10px;
     color: #fff;
     font-size: 1.3em;
+    text-decoration: none;
 }
 
 .glyphicon {
@@ -53,7 +72,8 @@ main.container {
 }
 
 .panel-body {
-    background-color: #eee;
+    background-color: #f7f7f7;
+    font-size: 1.1em;
 }
 
 .panel-primary>.panel-heading {
@@ -66,3 +86,110 @@ main.container {
     font-size: 1.2em;
     letter-spacing: 0.01em;
 }
+
+.bottom-row {
+    margin: 0 auto;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.feature {
+    margin-top: 3%;
+    height: 345px;
+    background-color: #601017;
+    border-radius: 10px;
+    box-shadow: 6px -3px 12px 1px;
+}
+
+.feature-bg {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-image: url("../img/alex-munsell-18754.jpg");
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+}
+
+.feature-title {
+    font-family: 'Limelight', cursive;
+}
+
+.feature-body {
+    display: inline-block;
+    width: 90%;
+    position: absolute;
+    top: 0;
+    margin-left: 5%;
+    color: #f7f7f7;
+}
+
+.feature-body li {
+    font-size: 1.3em;
+}
+
+.feature-body a {
+    color: #f7f7f7;
+}
+
+.feature-reviews {
+    margin-left: 2%;
+}
+
+section.detail-container {
+    width: 100vw;
+    min-height: 60vh;
+    padding: 0;
+    background-image: url("../img/alex-munsell-18754.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+section.edit-container {
+    width: 100vw;
+    min-height: 60vh;
+    padding: 0;
+    background-image: url("../img/noom-peerapong-30948.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+}
+
+.detail-heading {
+    font-size: 2em;
+    padding-bottom: 5px;
+    font-size: 2.3em;
+    font-weight: bold;
+}
+
+.edit-heading {
+    color: #f7f7f7;
+}
+
+.detail-body {
+    margin-top: 2%;
+}
+
+.detail-panel {
+    margin: 0 auto;
+}
+
+.big-panel {
+    font-size: 2.3em;
+}
+
+.reviews-container {
+    margin-top: 20px;
+    background-color: #601017;
+}
+
+.review-top {
+    color: #f7f7f7;
+}
+
+.review-panel-title {
+    color: #601017;
+}
+
+

@@ -3,33 +3,34 @@
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"/>
-    <link href="../static/css/styles.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Limelight|Taviraj" rel="stylesheet"/>
     <title>MovieNite</title>
 </head>
-<body class="container main-body">
+<body class="main-body">
 
 <header class="navbar navbar-inverse navbar-fixed-top">
     <nav class="container">
         <ul class="list-inline list-unstyled">
-            <li class="navbar-brand"><span class="glyphicon glyphicon-facetime-video"></span><b class="logo">MovieNite</b></li>
+            <li class="navbar-brand"><span class="glyphicon glyphicon-facetime-video"></span><b class="logo"><a href="/">MovieNite</a></b></li>
 
             <li class="navbar-right">
-                <ul class="list-inline list-unstyled">
+                <ul class="list-inline list-unstyled nav-list">
                     <li><a href="/">Home</a></li>
-                    <li><a href="#add-movie">Add a Movie</a></li>
+                    <li><a href="/#add-movie">Add a Movie</a></li>
                 </ul>
             </li>
         </ul>
     </nav>
 </header>
 
-    <main class="container">
+    <main class="">
 
-        <div class="row">
-            <h3>Movie Details</h3>
-            <div class="col-md-8">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
+        <section class="container detail-container">
+            <div class="col-md-8 detail-body">
+                <h3 class="detail-heading">Movie Details</h3>
+                <div class="panel panel-primary detail-panel">
+                    <div class="panel-heading big-panel">
                         <h3 class="panel-title" th:text="${movie.title}"></h3>
                     </div>
                     <div class="panel-body">
@@ -37,28 +38,28 @@
                             <li>Genre: <span th:text="${movie.genre}"></span></li>
                             <li><a th:href="${movie.imdburl}">View on IMDB</a></li>
                             <li>Release Date: <span th:text="${movie.releasedate}"></span></li>
-                            <li><a th:href="'/movie/edit/' + @{${movie.id}}">Edit this Movie</a></li>
                         </ul>
-                    </div>
-                </div>
-                <h3>Reviews for this film:</h3>
-                <div class="panel panel-default" th:each="review : ${movie.reviews}">
-                    <div class="panel-heading">
-                        <div class="panel-title">Reviewer: <span th:text="${review.reviewername}"></span></div>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="list-unstyled">
-                            <li><b>Stars: </b> <span th:text="${review.rating}"></span></li>
-                            <li><b>Reviewer's Age: </b> <span th:text="${review.reviewerage}"></span></li>
-                            <li><b>Reviewer's Gender: </b> <span th:text="${review.reviewergender}"></span></li>
-                            <li><b>Reviewer's Occupation: </b> <span th:text="${review.revieweroccupation}"></span></li>
-                        </ul>
+                        <div><a th:href="'/movie/edit/' + @{${movieId}}">Edit this Movie</a></div>
                     </div>
                 </div>
             </div>
-
-        </div>
-
+        </section>
+        <section class="container reviews-container">
+            <h3 class="review-top">Reviews for this film:</h3>
+            <div class="panel panel-default" th:each="review : ${movie.reviews}">
+                <div class="panel-heading">
+                    <div class="panel-title review-panel-title">Reviewer: <span th:text="${review.reviewername}"></span></div>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                        <li><b>Stars: </b> <span th:text="${review.rating}"></span></li>
+                        <li><b>Reviewer's Age: </b> <span th:text="${review.reviewerage}"></span></li>
+                        <li><b>Reviewer's Gender: </b> <span th:text="${review.reviewergender}"></span></li>
+                        <li><b>Reviewer's Occupation: </b> <span th:text="${review.revieweroccupation}"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </main>
 
     <hr/>

@@ -12,7 +12,7 @@
     <header class="navbar navbar-inverse navbar-fixed-top">
         <nav class="container">
             <ul class="list-inline list-unstyled">
-                <li class="navbar-brand"><span class="glyphicon glyphicon-facetime-video"></span><b class="logo">MovieNite</b></li>
+                <li class="navbar-brand"><span class="glyphicon glyphicon-facetime-video"></span><b class="logo"><a href="/">MovieNite</a></b></li>
 
                 <li class="navbar-right">
                     <ul class="list-inline list-unstyled nav-list">
@@ -47,7 +47,7 @@
                                 <li>Genre: <span th:text="${movie.genre}"></span></li>
                                 <li><a th:href="${movie.imdburl}" target="_blank">View on IMDB</a></li>
                                 <li>Release Date: <span th:text="${movie.releasedate}"></span></li>
-                                <li><a th:href="'/movie/' + @{${movie.id}}">Review this Movie</a></li>
+                                <li><a th:href="'/movie/' + @{${movie.id}}">Show me the Reviews!</a></li>
                             </ul>
                         </div>
                     </div>
@@ -58,29 +58,52 @@
 
     </main>
 
-    <section class="container" id="add-movie">
-        <h3>Add a Movie</h3>
-        <form action="/addMovie" method="post">
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" name="title" class="form-control" id="title" placeholder="Movie Title" required="required"/>
-            </div>
-            <div class="form-group">
-                <label for="genre">Genre</label>
-                <input type="text" name="genre" class="form-control" id="genre" placeholder="Movie Genre"/>
-            </div>
-            <div class="form-group">
-                <label for="imdburl">IMDB URL</label>
-                <input type="text" name="imdburl" class="form-control" id="imdburl" placeholder="IMDB URL"/>
-            </div>
-            <div class="form-group">
-                <label for="releasedate">Release Date</label>
-                <input type="text" name="releasedate" class="form-control" id="releasedate" placeholder="Release Month + Year"/>
-            </div>
+    <div class="container row bottom-row">
+        <section class="container col-md-6" id="add-movie">
+            <h3>Add a Movie</h3>
+            <form action="/addMovie" method="post">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" class="form-control" id="title" placeholder="Movie Title" required="required"/>
+                </div>
+                <div class="form-group">
+                    <label for="genre">Genre</label>
+                    <input type="text" name="genre" class="form-control" id="genre" placeholder="Movie Genre"/>
+                </div>
+                <div class="form-group">
+                    <label for="imdburl">IMDB URL</label>
+                    <input type="text" name="imdburl" class="form-control" id="imdburl" placeholder="IMDB URL"/>
+                </div>
+                <div class="form-group">
+                    <label for="releasedate">Release Date</label>
+                    <input type="text" name="releasedate" class="form-control" id="releasedate" placeholder="Release Month + Year"/>
+                </div>
 
-            <button type="submit" class="btn btn-primary">Add Movie!</button>
-        </form>
-    </section>
+                <button type="submit" class="btn btn-primary">Add Movie!</button>
+            </form>
+        </section>
+        <section class="container col-md-6 feature">
+            <div class="feature-bg"></div>
+                <!--Photo by Alex Munsell on Unsplash-->
+
+            <div class="feature-body">
+                <h3>Feature Film</h3>
+                <h3 class="feature-title" th:text="${feature.title}"></h3>
+                <ul class="list-unstyled">
+                        <li><b>Genre: </b><span th:text="${feature.genre}"></span></li>
+                        <li><a th:href="${feature.imdburl}" target="_blank">View on IMDB</a></li>
+                        <li><b>Release Date: </b><span th:text="${feature.releasedate}"></span></li>
+                        <li><b>Recent Reviews: </b>
+                            <ul class="list-unstyled feature-reviews" th:each="review : ${feature.reviews}">
+                                <li><b>Stars: </b> <span th:text="${review.rating}"></span></li>
+                                <li><b>Reviewer's Age: </b> <span th:text="${review.reviewerage}"></span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+        </section>
+    </div>
 
 </body>
 </html>

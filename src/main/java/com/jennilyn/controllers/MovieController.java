@@ -23,8 +23,11 @@ public class MovieController {
 
     @RequestMapping("/")
     public String index(Model model){
+        long featureId = 2;
         Iterable<Movie> movies = repo.findAll();
+        Movie feature = repo.findOne(featureId);
         model.addAttribute("movies", movies);
+        model.addAttribute("feature", feature);
         return "index";
     }
 
