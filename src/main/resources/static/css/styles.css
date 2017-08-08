@@ -211,4 +211,12 @@ section.edit-container {
     color: #601017;
 }
 
+input#logout {
+    background-color: transparent;
+    border: none;
+    color: #f7f7f7;
+    font-weight: bold;
+}
+
+
 

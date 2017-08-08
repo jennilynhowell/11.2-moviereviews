@@ -1,28 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}"/>
-    <link href="https://fonts.googleapis.com/css?family=Limelight|Taviraj" rel="stylesheet"/>
-    <title>MovieNite</title>
-</head>
+<head th:include="includes :: head"></head>
 <body class="main-body">
 
-    <header class="navbar navbar-inverse navbar-fixed-top">
-        <nav class="container">
-            <ul class="list-inline list-unstyled">
-                <li class="navbar-brand"><span class="glyphicon glyphicon-facetime-video"></span><b class="logo"><a href="/">MovieNite</a></b></li>
-
-                <li class="navbar-right">
-                    <ul class="list-inline list-unstyled nav-list">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/#add-movie">Add a Movie</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <div th:include="includes :: header"></div>
 
     <section class="container edit-container">
         <!--Photo by Noom Peerapong on Unsplash-->
@@ -51,19 +32,19 @@
         <form th:action="'/movie/edit/' + ${movieId} + '/editMovie'" method="post">
             <div class="form-group">
                 <label for="title">Update Title</label>
-                <input type="text" name="title" class="form-control" id="title" placeholder="Movie Title" required="required"/>
+                <input type="text" firstName="title" class="form-control" id="title" placeholder="Movie Title" required="required"/>
             </div>
             <div class="form-group">
                 <label for="genre">Update Genre</label>
-                <input type="text" name="genre" class="form-control" id="genre" placeholder="Movie Genre"/>
+                <input type="text" firstName="genre" class="form-control" id="genre" placeholder="Movie Genre"/>
             </div>
             <div class="form-group">
                 <label for="imdburl">Update IMDB URL</label>
-                <input type="url" name="imdburl" class="form-control" id="imdburl" placeholder="IMDB URL"/>
+                <input type="url" firstName="imdburl" class="form-control" id="imdburl" placeholder="IMDB URL"/>
             </div>
             <div class="form-group">
                 <label for="releasedate">Update Release Date</label>
-                <select class="form-control" name="releasedate" id="age">
+                <select class="form-control" firstName="releasedate" id="age">
                     <option value="0">Release Month</option>
                     <option>January</option>
                     <option>February</option>
@@ -78,7 +59,7 @@
                     <option>November</option>
                     <option>December</option>
                 </select>
-                <input type="text" name="releasedate" class="form-control" id="releasedate" placeholder="Release Year"/>
+                <input type="text" firstName="releasedate" class="form-control" id="releasedate" placeholder="Release Year"/>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit Changes</button>

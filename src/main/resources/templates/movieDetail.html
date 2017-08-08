@@ -1,28 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}"/>
-    <link href="https://fonts.googleapis.com/css?family=Limelight|Taviraj" rel="stylesheet"/>
-    <title>MovieNite</title>
-</head>
+<head th:include="includes :: head"></head>
 <body class="main-body">
 
-<header class="navbar navbar-inverse navbar-fixed-top">
-    <nav class="container">
-        <ul class="list-inline list-unstyled">
-            <li class="navbar-brand"><span class="glyphicon glyphicon-facetime-video"></span><b class="logo"><a href="/">MovieNite</a></b></li>
-
-            <li class="navbar-right">
-                <ul class="list-inline list-unstyled nav-list">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/#add-movie">Add a Movie</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-</header>
+    <div th:include="includes :: header"></div>
 
     <main class="">
 
@@ -48,14 +29,14 @@
             <h3 class="review-top">Reviews for this film:</h3>
             <div class="panel panel-default" th:each="review : ${movie.reviews}">
                 <div class="panel-heading">
-                    <div class="panel-title review-panel-title">Reviewer: <span th:text="${review.reviewername}"></span></div>
+                    <div class="panel-title review-panel-title">Reviewer: <span th:text="${review.user.firstName}"></span></div>
                 </div>
                 <div class="panel-body">
                     <ul class="list-unstyled">
                         <li><b>Stars: </b> <span th:text="${review.rating}"></span></li>
-                        <li><b>Reviewer's Age: </b> <span th:text="${review.reviewerage}"></span></li>
-                        <li><b>Reviewer's Gender: </b> <span th:text="${review.reviewergender}"></span></li>
-                        <li><b>Reviewer's Occupation: </b> <span th:text="${review.revieweroccupation}"></span></li>
+                        <li><b>Reviewer's Age: </b> <span th:text="${review.user.age}"></span></li>
+                        <li><b>Reviewer's Gender: </b> <span th:text="${review.user.gender}"></span></li>
+                        <li><b>Reviewer's Occupation: </b> <span th:text="${review.user.occupation}"></span></li>
                     </ul>
                 </div>
             </div>
@@ -67,7 +48,6 @@
     <section class="container col-md-8 form-container" id="">
         <h3>Review this Movie</h3>
         <form th:action="'/movie/' + ${movie.id} + '/addReview'" method="post">
-            <input type="hidden" name="movietitle" th:value="${movie.title}"/>
             <div class="radio-inline">
                 <label>
                     <input type="radio" name="rating" value="1"/>
@@ -88,7 +68,7 @@
             </div>
             <div class="radio-inline">
                 <label>
-                    <input type="radio" name="rating" value="4"/>
+                    <input type="radio" firstName="rating" value="4"/>
                     Four stars
                 </label>
             </div>
@@ -97,42 +77,6 @@
                     <input type="radio" name="rating" value="5"/>
                     Five stars
                 </label>
-            </div>
-            <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" name="reviewername" class="form-control" id="name" placeholder="Your Name"/>
-            </div>
-            <div class="form-group">
-                <label for="age">Your Age (optional)</label>
-                <select class="form-control" name="age" id="age">
-                    <option value="not provided">Please select</option>
-                    <option>13-18</option>
-                    <option>18-25</option>
-                    <option>26-32</option>
-                    <option>33-45</option>
-                    <option>46-55</option>
-                    <option>56-65</option>
-                    <option>65+</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="reviewergender">Your Gender (optional)</label>
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="reviewergender" id="reviewergender" value="Male"/>
-                        Male
-                    </label>
-                </div>
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="reviewergender" id="reviewergender" value="Female"/>
-                        Female
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="occupation">Your Occupation (optional)</label>
-                <input type="text" name="revieweroccupation" class="form-control" id="occupation" placeholder="Your Occupation"/>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit Review!</button>

@@ -7,8 +7,9 @@
 
     <div class="container">
         <h1>Please Log In</h1>
-        <div>{{Error placeholder}}</div>
-        <div class="container">
+        <div><a href="/login/signup">Take me to the Sign Up page.</a></div>
+        <div th:text="${error}"></div>
+        <div class="container col-md-6">
             <form class="form-group" th:action="@{/login}" method="post" th:object="${user}">
                 <input class="form-control" type="text" th:field="*{username}" placeholder="Username"/>
                 <input class="form-control" type="password" th:field="*{password}" placeholder="Password"/>

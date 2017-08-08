@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="includes :: head"></head>
+<body>
+
+<div th:include="includes :: header"></div>
+
+<div class="container">
+    <h1>Sign up for MovieNite</h1>
+    <div th:text="${error}"></div>
+    <div class="container col-md-6">
+        <form class="form-group" th:action="@{/login/signup}" method="post" th:object="${user}">
+            <div class="form-group">
+                <label for="name">Your First Name</label>
+                <input type="text" th:field="*{firstName}" class="form-control" id="name" placeholder="First Name"/>
+            </div>
+            <div class="form-group">
+                <label for="username">Choose a Username</label>
+                <input type="text" th:field="*{username}" class="form-control" id="username" placeholder="Username"/>
+            </div>
+            <div class="form-group">
+                <label for="password">Choose a Password</label>
+                <input type="text" th:field="*{password}" class="form-control" id="password" placeholder="Password"/>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Your Age</label>
+                <select class="form-control" th:field="*{age}" id="age">
+                    <option value="not provided">Please select</option>
+                    <option value="13-18">13-18</option>
+                    <option value="18-25">18-25</option>
+                    <option value="26-32">26-32</option>
+                    <option value="33-45">33-45</option>
+                    <option value="46-55">46-55</option>
+                    <option value="56-65">56-65</option>
+                    <option value="65+">65+</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="reviewergender">Your Gender (optional)</label>
+                <div class="radio">
+                    <label>
+                        <input type="radio" th:field="*{gender}" id="reviewergender" value="Male"/>
+                        Male
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="reviewergender" id="reviewergender" value="Female"/>
+                        Female
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="occupation">Your Occupation</label>
+                <input type="text" th:field="*{occupation}" class="form-control" id="occupation" placeholder="Your Occupation"/>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

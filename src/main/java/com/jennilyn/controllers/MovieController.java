@@ -42,15 +42,6 @@ public class MovieController {
         return "movieDetail";
     }
 
-    @RequestMapping(value = "/movie/{movieId}/addReview", method = RequestMethod.POST)
-    public String addReview(@PathVariable("movieId") long movieId,
-                            @RequestParam("rating") int rating){
-        Movie movie = movieRepo.findOne(movieId);
-        Review newReview = new Review(rating, movie);
-        reviewRepo.save(newReview);
-        return "redirect:/movie/" + movieId;
-    }
-
     @RequestMapping("/movie/edit/{movieId}")
     public String editMovieView(@PathVariable("movieId") long movieId, Model model){
         Movie movie = movieRepo.findOne(movieId);
