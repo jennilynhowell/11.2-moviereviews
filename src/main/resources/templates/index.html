@@ -1,28 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{css/styles.css}"/>
-    <link href="https://fonts.googleapis.com/css?family=Limelight|Taviraj" rel="stylesheet"/>
-    <title>MovieNite</title>
-</head>
+<head th:include="includes :: head"></head>
+
 <body class="main-body">
 
-    <header class="navbar navbar-inverse navbar-fixed-top">
-        <nav class="container">
-            <ul class="list-inline list-unstyled">
-                <li class="navbar-brand"><span class="glyphicon glyphicon-facetime-video"></span><b class="logo"><a href="/">MovieNite</a></b></li>
-
-                <li class="navbar-right">
-                    <ul class="list-inline list-unstyled nav-list">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="#add-movie">Add a Movie</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <header th:include="includes :: header"></header>
 
     <div class="jumbotron">
         <div class="container">
@@ -61,7 +43,7 @@
     <div class="container row bottom-row form-container">
         <section class="container col-md-6" id="add-movie">
             <h3>Add a Movie</h3>
-            <form action="/addMovie" method="post">
+            <form action="/movie/addMovie" method="post">
                 <div class="form-group">
                     <label for="title">Title</label>
                     <input type="text" name="title" class="form-control" id="title" placeholder="Movie Title" required="required"/>

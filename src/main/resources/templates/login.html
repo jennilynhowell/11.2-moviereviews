@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="includes :: head"></head>
+<body>
+
+    <div th:include="includes :: header"></div>
+
+    <div class="container">
+        <h1>Please Log In</h1>
+        <div>{{Error placeholder}}</div>
+        <div class="container">
+            <form class="form-group" th:action="@{/login}" method="post" th:object="${user}">
+                <input class="form-control" type="text" th:field="*{username}" placeholder="Username"/>
+                <input class="form-control" type="password" th:field="*{password}" placeholder="Password"/>
+                <input class="form-control btn btn-primary" type="submit" value="Log In"/>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

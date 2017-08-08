@@ -9,25 +9,19 @@ public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String movietitle;
-    private String reviewername;
-    private String reviewerage;
-    private String reviewergender;
-    private String revieweroccupation;
     private int rating;
 
     @ManyToOne
     @JoinColumn(name = "movie_id")
     private Movie movie;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Review() {}
 
-    public Review(String movietitle, String reviewername, String reviewerage, String reviewergender, String revieweroccupation, int rating, Movie movie) {
-        this.movietitle = movietitle;
-        this.reviewername = reviewername;
-        this.reviewerage = reviewerage;
-        this.reviewergender = reviewergender;
-        this.revieweroccupation = revieweroccupation;
+    public Review(int rating, Movie movie) {
         this.rating = rating;
         this.movie = movie;
     }
@@ -40,38 +34,6 @@ public class Review {
         this.id = id;
     }
 
-    public String getReviewername() {
-        return reviewername;
-    }
-
-    public void setReviewername(String reviewername) {
-        this.reviewername = reviewername;
-    }
-
-    public String getReviewerage() {
-        return reviewerage;
-    }
-
-    public void setReviewerage(String reviewerage) {
-        this.reviewerage = reviewerage;
-    }
-
-    public String getReviewergender() {
-        return reviewergender;
-    }
-
-    public void setReviewergender(String reviewergender) {
-        this.reviewergender = reviewergender;
-    }
-
-    public String getRevieweroccupation() {
-        return revieweroccupation;
-    }
-
-    public void setRevieweroccupation(String revieweroccupation) {
-        this.revieweroccupation = revieweroccupation;
-    }
-
     public int getRating() {
         return rating;
     }
@@ -80,11 +42,19 @@ public class Review {
         this.rating = rating;
     }
 
-    public String getMovietitle() {
-        return movietitle;
+    public Movie getMovie() {
+        return movie;
     }
 
-    public void setMovietitle(String movietitle) {
-        this.movietitle = movietitle;
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
