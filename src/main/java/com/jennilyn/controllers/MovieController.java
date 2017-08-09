@@ -25,7 +25,12 @@ public class MovieController {
     @Autowired
     UserRepository userRepo;
 
-    @RequestMapping(value = "/movie/addMovie", method = RequestMethod.POST)
+    @RequestMapping("/movie/edit/addMovie")
+    public String addMovie(){
+        return "addMovie";
+    }
+
+    @RequestMapping(value = "/movie/edit/addMovie", method = RequestMethod.POST)
     public String addMovie(@RequestParam("title") String title,
                            @RequestParam("genre") String genre,
                            @RequestParam("imdburl") String imdburl,

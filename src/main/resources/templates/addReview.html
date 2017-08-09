@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="includes :: head"></head>
+<body class="main-body">
+
+    <div th:include="includes :: header"></div>
+
+    <section class="container col-md-8 form-container" id="">
+
+        <h3 th:inline="text">Review [[${movie.title}]]</h3>
+        <form th:action="'/movie/edit/' + ${movie.id} + '/addReview'" method="post">
+            <div class="radio-inline">
+                <label>
+                    <input type="radio" name="rating" value="1"/>
+                    One star
+                </label>
+            </div>
+            <div class="radio-inline">
+                <label>
+                    <input type="radio" name="rating" value="2"/>
+                    Two stars
+                </label>
+            </div>
+            <div class="radio-inline">
+                <label>
+                    <input type="radio" name="rating" value="3"/>
+                    Three stars
+                </label>
+            </div>
+            <div class="radio-inline">
+                <label>
+                    <input type="radio" firstName="rating" value="4"/>
+                    Four stars
+                </label>
+            </div>
+            <div class="radio-inline">
+                <label>
+                    <input type="radio" name="rating" value="5"/>
+                    Five stars
+                </label>
+            </div>
+            <br/>
+            <button type="submit" class="btn btn-primary">Submit Review!</button>
+        </form>
+    </section>
+
+</body>
+</html>

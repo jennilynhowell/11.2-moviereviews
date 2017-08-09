@@ -8,6 +8,7 @@ import com.jennilyn.models.Review;
 import com.jennilyn.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,7 +28,17 @@ public class ReviewController {
     @Autowired
     UserRepository userRepo;
 
-    @RequestMapping(value = "/movie/{movieId}/addReview", method = RequestMethod.POST)
+    @RequestMapping("/movie/edit/{movieId}/addReview")
+    public String addReview(@PathVariable("movieId") long movieId,
+                            Model model){
+
+        Movie movie = movieRepo.findOne(movieId);
+        model.addAttribute("movie", movie);
+
+        return "addReview";
+    }
+
+    @RequestMapping(value = "/movie/edit/{movieId}/addReview", method = RequestMethod.POST)
     public String addReview(@PathVariable("movieId") long movieId,
                             @RequestParam("rating") int rating,
                             Principal principal){
@@ -43,5 +54,4 @@ public class ReviewController {
         return "redirect:/movie/" + movieId;
     }
 
-    //TODO: add endpoint for viewing all your reviews
 }
