@@ -5,10 +5,10 @@
 
 	<groupId>com.jennilyn</groupId>
 	<artifactId>moviereviews</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.3-PREDEPLOY</version>
 	<packaging>jar</packaging>
 
-	<firstName>moviereviews</firstName>
+	<name>moviereviews</name>
 	<description>Movie Reviews project</description>
 
 	<parent>
