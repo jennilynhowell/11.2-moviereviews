@@ -26,6 +26,7 @@ public class HomeController {
         long featureId = 2;
         Iterable<Movie> movies = movieRepo.findAll();
         Movie feature = movieRepo.findOne(featureId);
+
         model.addAttribute("movies", movies);
         model.addAttribute("feature", feature);
         return "index";

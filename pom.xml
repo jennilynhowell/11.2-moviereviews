@@ -5,7 +5,7 @@
 
 	<groupId>com.jennilyn</groupId>
 	<artifactId>moviereviews</artifactId>
-	<version>0.0.3-PREDEPLOY</version>
+	<version>0.0.5-PREDEPLOY</version>
 	<packaging>jar</packaging>
 
 	<name>moviereviews</name>

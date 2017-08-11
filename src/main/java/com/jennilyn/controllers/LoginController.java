@@ -51,7 +51,6 @@ public class LoginController {
                          HttpServletRequest request,
                          Model model){
         User user = new User(username, password, firstName, age, gender, occupation);
-
         userRepo.save(user);
 
         try {
